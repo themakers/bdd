@@ -17,4 +17,8 @@ jobs:
           go vet .
           golint .
       - name: test
-        run: go test -v -cover
+        run: go test -v -cover -race -coverprofile=coverage.txt -covermode=atomic
+      - name: codecov
+        run: bash <(curl -s https://codecov.io/bash)
+      #- name: codecov
+      #  uses: codecov/codecov-action@v1
