@@ -1,0 +1,11 @@
+name: telegram
+on: [push, pull_request, create, issues, issue_comment, watch]
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: themakers/telegram-action@master
+        with:
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: '-1001323286490'

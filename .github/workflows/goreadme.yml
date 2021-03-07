@@ -1,0 +1,24 @@
+name: goreadme
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+jobs:
+  goreadme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update readme according to Go doc
+        uses: posener/goreadme@v1
+        with:
+          title: 'BDD'
+          email: 'ci@themake.rs'
+          functions: true
+          recursive: true
+          badge-travisci: false
+          badge-codecov: true
+          badge-godoc: true
+          badge-goreadme: true
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          debug: false
