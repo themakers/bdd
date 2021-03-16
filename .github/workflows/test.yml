@@ -20,5 +20,9 @@ jobs:
         run: go test -v -cover -race -coverprofile=coverage.txt -covermode=atomic
       - name: codecov
         run: bash <(curl -s https://codecov.io/bash)
+      - name: Run FOSSA scan and upload build data
+        uses: fossa-contrib/fossa-action@v1
+        with:
+          fossa-api-key: ${{ secrets.FOSSA_API_KEY }}
       #- name: codecov
       #  uses: codecov/codecov-action@v1
